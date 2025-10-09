@@ -1,0 +1,114 @@
+/* DailyActivity.css */
+
+.daily-activity-container {
+    width: 100%;
+    min-height: 320px;
+    border-radius: 5px;
+    background: #FBFBFB;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  
+  .daily-activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .daily-activity-title {
+    font-size: 15px;
+    margin: 0;
+    font-weight: 500;
+    color: #20253A;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .daily-activity-legend {
+    display: flex;
+    gap: 54px;
+    font-size: 14px;
+    color: #74798C;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .legend-dot-black {
+    background-color: #282D30;
+  }
+  
+  .legend-dot-red {
+    background-color: #E60000;
+  }
+  
+  .daily-activity-tooltip {
+    width: 39px;
+    height: 63px;
+    background-color: #E60000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  .tooltip-text {
+    margin: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 7px;
+    font-weight: 500;
+  }
+  
+  .component-error,
+  .no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: #74798C;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .component-error i {
+    font-size: 40px;
+    color: #FF0101;
+    margin-bottom: 10px;
+  }/* DailyActivity.css */
+  
+  .daily-activity-container {
+    background: #FBFBFB;
+    border-radius: 5px;
+    padding: 24px 26px 23px 32px;
+    width: 100%;
+    min-height: 320px;
+    position: relative;
+  }
+  
+  .daily-activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .daily-activity-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+  }

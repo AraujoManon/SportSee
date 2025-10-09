@@ -1,0 +1,82 @@
+/* Score.css */
+
+.score-container {
+    width: 258px;
+    height: 263px;
+    background: #FBFBFB;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  }
+  
+  .score-title {
+    position: absolute;
+    top: 24px;
+    left: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #20253A;
+    margin: 0;
+    z-index: 2;
+  }
+  
+  .score-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .score-percentage {
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #282D30;
+    margin: 0 0 5px 0;
+  }
+  
+  .score-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #74798C;
+    margin: 0;
+    line-height: 26px;
+  }
+  
+  .score-loading,
+  .score-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #74798C;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .score-error i {
+    font-size: 30px;
+    color: #FF0101;
+    margin-bottom: 10px;
+  }
+  
+  .score-loading p,
+  .score-error p {
+    margin: 10px 0 0 0;
+    font-size: 12px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .score-container {
+      width: 100%;
+      height: 220px;
+    }
+  }
