@@ -8,7 +8,7 @@
   
   .home-content {
     flex: 1;
-    padding: 68px 107px 88px 109px;
+    padding: 68px 30px 88px 109px;
     max-width: 1440px;
   }
   
@@ -129,19 +129,7 @@
     }
   }
   
-  @media (max-width: 1280px) {
-    .home {
-      flex-direction: column;
-    }
-    
-    .home-indicator {
-      width: 100%;
-      padding: 40px 50px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-  }
+ 
   
   @media (max-width: 1024px) {
     .hello h1 {

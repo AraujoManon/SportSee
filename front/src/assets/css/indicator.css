@@ -30,25 +30,11 @@
     flex-shrink: 0;
   }
   
-  .indicator-calories .indicator-icon {
-    background: rgba(255, 0, 0, 0.1);
-  }
-  
-  .indicator-protein .indicator-icon {
-    background: rgba(74, 184, 255, 0.1);
-  }
-  
-  .indicator-carbs .indicator-icon {
-    background: rgba(249, 206, 35, 0.1);
-  }
-  
-  .indicator-fat .indicator-icon {
-    background: rgba(253, 81, 129, 0.1);
-  }
+
   
   .indicator-icon-img {
-    width: 20px;
-    height: 20px;
+    width: 60px;
+    height: 60px;
   }
   
   .indicator-content {

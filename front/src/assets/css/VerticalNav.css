@@ -1,6 +1,5 @@
-/* VerticalNav.css */
-
 .vertical-nav {
+    padding: 25px;
     width: 117px;
     min-height: calc(100vh - 91px);
     background: #020203;
@@ -8,7 +7,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 0;
     position: relative;
   }
   
@@ -29,8 +27,6 @@
   }
   
   .sports li {
-    width: 64px;
-    height: 64px;
     background: #FFFFFF;
     border-radius: 6px;
     display: flex;
@@ -45,8 +41,8 @@
   }
   
   .sports li img {
-    width: 32px;
-    height: 32px;
+    width: 64px;
+    height: 64px;
   }
   
   .copyright {
