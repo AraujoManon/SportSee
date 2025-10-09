@@ -8,7 +8,6 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer
 } from "recharts";
-import "../assets/css/Performance.css";
 
 const Performance = () => {
   

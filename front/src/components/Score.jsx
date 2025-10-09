@@ -1,165 +1,109 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import useFetch from "../hooks/UseFetch";
 import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  ResponsiveContainer
+  RadialBarChart,
+  RadialBar,
+  ResponsiveContainer,
+  PolarAngleAxis
 } from "recharts";
-import "../assets/css/Performance.css";
 
-const Performance = () => {
+const Score = () => {
   
   const { id } = useParams();
   const [searchParams] = useSearchParams();
   const mode = searchParams.get("mode");
   
-  const { data, loading, error } = useFetch(id, 'performance', mode);
+  const { data, loading, error } = useFetch(id, 'user', mode);
   
   if (loading === true) {
     return (
-      <div className="performance-container performance-loading">
+      <div className="score-container score-loading">
         <div className="loading-spinner"></div>
-        <p>Chargement des performances...</p>
+        <p>Chargement du score...</p>
       </div>
     );
   }
   
   if (error !== null) {
     return (
-      <div className="performance-container performance-error">
-        <i className="fa fa-exclamation-triangle"></i>
-        <p>Impossible de charger les performances</p>
+      <div className="score-container score-error">
+        <i className="fa fa-exclamation-circle"></i>
+        <p>Impossible de charger le score</p>
       </div>
     );
   }
   
   if (data === null) {
     return (
-      <div className="performance-container performance-loading">
-        Aucune donnée disponible
+      <div className="score-container">
+        <p>Aucune donnée</p>
       </div>
     );
   }
   
-  if (data.data === undefined) {
-    return (
-      <div className="performance-container performance-loading">
-        Aucune donnée disponible
-      </div>
-    );
+  let score;
+  
+  if (data.todayScore !== undefined) {
+    score = data.todayScore;
+  }
+  else if (data.score !== undefined) {
+    score = data.score;
+  }
+  else {
+    score = 0;
   }
   
-  if (data.kind === undefined) {
-    return (
-      <div className="performance-container performance-loading">
-        Aucune donnée disponible
-      </div>
-    );
-  }
+  const pourcentage = score * 100;
   
-  const kindMap = {
-    1: 'Cardio',
-    2: 'Energie',
-    3: 'Endurance',
-    4: 'Force',
-    5: 'Vitesse',
-    6: 'Intensité'
-  };
-  
-  const orderMap = {
-    'Intensité': 0,
-    'Vitesse': 1,
-    'Force': 2,
-    'Endurance': 3,
-    'Energie': 4,
-    'Cardio': 5
-  };
-  
-  const donneesTransformees = data.data.map((item) => {
-    
-    let nomCategorie;
-    
-    if (kindMap[item.kind] !== undefined) {
-      nomCategorie = kindMap[item.kind];
+  const chartData = [
+    {
+      value: pourcentage,
+      fill: '#FF0000'
     }
-    else {
-      nomCategorie = data.kind[item.kind];
-    }
-    
-    const objetFormate = {
-      subject: nomCategorie,
-      value: item.value,
-      fullMark: 250
-    };
-    
-    return objetFormate;
-  });
+  ];
   
-  const donneeTriees = donneesTransformees.sort((a, b) => {
-    const ordreA = orderMap[a.subject];
-    const ordreB = orderMap[b.subject];
-    const difference = ordreA - ordreB;
-    return difference;
-  });
-  
-  const formattedData = donneeTriees;
-  
-  const renderPolarAngleAxisTick = ({ payload, x, y, cx, cy, ...rest }) => {
-    return (
-      <text 
-        {...rest}
-        x={x}
-        y={y}
-        className="performance-axis-label" 
-      >
-        {payload.value}
-      </text>
-    );
-  };
+  const pourcentageAffiche = Math.round(pourcentage);
   
   return (
-    <div className="performance-container">
+    <div className="score-container">
+      <h3 className="score-title">Score</h3>
+      
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart 
-          data={formattedData}
-          margin={{ top: 30, right: 30, bottom: 30, left: 30 }} 
+        <RadialBarChart 
+          cx="50%"
+          cy="50%"
+          innerRadius={70}
+          outerRadius={85}
+          barSize={10}
+          data={chartData}
+          startAngle={90}
+          endAngle={450}
         >
-          
-          <PolarGrid 
-            radialLines={false}
-            gridType="polygon"
-            polarRadius={[10, 20, 35, 50, 65, 80]}
-            stroke="#FFFFFF"       
-            strokeWidth={1}       
-          />
-          
-          <PolarAngleAxis 
-            dataKey="subject"
-            tick={renderPolarAngleAxisTick}
-            stroke="none"
-          />
-          
-          <PolarRadiusAxis
-            angle={90}
-            domain={[0, 250]}
+          <PolarAngleAxis
+            type="number"
+            domain={[0, 100]}
+            angleAxisId={0}
             tick={false}
-            axisLine={false}
           />
-          
-          <Radar 
+          <RadialBar
+            background={{ fill: '#FFFFFF' }}
+            clockWise={false}
             dataKey="value"
-            stroke="#FF0101"
-            fill="#FF0101"
-            fillOpacity={0.7}
-            strokeWidth={0}
+            cornerRadius={10}
+            fill="#FF0000"
           />
-        </RadarChart>
+        </RadialBarChart>
       </ResponsiveContainer>
+      
+      <div className="score-center">
+        <div className="score-percentage">
+          {pourcentageAffiche}%
+        </div>
+        <div className="score-text">de votre</div>
+        <div className="score-text">objectif</div>
+      </div>
     </div>
   );
 };
 
-export default Performance;
+export default Score;
